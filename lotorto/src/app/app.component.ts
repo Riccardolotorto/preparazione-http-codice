@@ -15,6 +15,7 @@ export class AppComponent {
   fooSS : boolean = false;
   nonArrayData !: Prenotazione;
   obs !: Observable<Prenotazione>;
+  ciclo !: Prenotazione;
   constructor(private http: HttpClient) {
     this.o = this.http.get<Prenotazione[]>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking');
     this.o.subscribe(this.getData);
@@ -41,8 +42,9 @@ export class AppComponent {
   getDataPosted = (p: Prenotazione) => {
     this.nonArrayData = p;
   }
-  fooSSS(): boolean {
+  fooSSS(f: Prenotazione): boolean {
     this.fooSS = !this.fooSS;
+    this.ciclo = f;
     return false
   }
 }
