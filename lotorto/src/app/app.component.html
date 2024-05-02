@@ -25,11 +25,15 @@
   </div>
 </form>
 <br>
-<button class="card text-center btn btn-warning mx-auto" *ngFor = "let a of data" style="width: 32rem;" (click)="foosss()">
-  <p class="fw-bold">{{a.data}} - {{a.ora}} -> {{a.nome}} {{a.cognome}}</p>
-</button><br>
-<div *ngIf="fooSS" class="text-center">
-  <app-foo [mostra] = "data"></app-foo>
+<div *ngFor="let a of data">
+  <button class="card btn btn-warning mx-auto" style="width: 32rem;" (click)="fooSSS()">
+    <p class="fw-bold">{{a.data }} - {{a.ora }} -> {{a.nome }} {{a.cognome}}</p>
+    <br>
+    <div *ngIf="fooSS">
+      <app-foo [mostra]="a"></app-foo>
+    </div>
+  </button>
 </div>
+
 
   

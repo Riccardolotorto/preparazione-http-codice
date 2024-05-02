@@ -22,7 +22,7 @@ export class AppComponent {
   getData = (d : Prenotazione[]) => {
     this.data = d;
   }
-  prenota(n: HTMLInputElement, c: HTMLInputElement, i: HTMLInputElement, t: HTMLInputElement, e: HTMLInputElement, dP: HTMLInputElement, oP: HTMLInputElement): boolean {
+  prenota(n: HTMLInputElement, c: HTMLInputElement, dP: HTMLInputElement, oP: HTMLInputElement, i: HTMLInputElement, e: HTMLInputElement, t: HTMLInputElement): boolean {
     let posted = JSON.stringify({
       "nome": n.value,
       "cognome": c.value,
@@ -35,12 +35,13 @@ export class AppComponent {
     console.log(posted);
     this.obs = this.http.post<Prenotazione>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking', posted);
     this.obs.subscribe(this.getDataPosted);
+    this.data.push(new Prenotazione(n.value, c.value, dP.value, oP.value, i.value, e.value, t.value));
     return false
   }
   getDataPosted = (p: Prenotazione) => {
     this.nonArrayData = p;
   }
-  foosss(): boolean {
+  fooSSS(): boolean {
     this.fooSS = !this.fooSS;
     return false
   }
