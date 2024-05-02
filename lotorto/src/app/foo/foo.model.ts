@@ -5,5 +5,5 @@ export class Foo {
     ora !: string;
     indirizzo !: string;
     email !: string;
-    teleono !: string;
+    telefono !: string;
 }

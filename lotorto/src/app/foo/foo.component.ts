@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { Foo } from './foo.model';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
+import { Prenotazione } from '../prenotazione.model';
 
 @Component({
   selector: 'app-foo',
@@ -9,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./foo.component.css']
 })
 export class FooComponent {
-  dataPosted !: Foo;
+  @Input() mostra!: Prenotazione[];
+  /*dataPosted !: Foo;
   obs !: Observable<Foo>;
   constructor(private http: HttpClient) {
     let posted = JSON.stringify({"indirizzo": "via grassi 22",
@@ -22,5 +21,5 @@ export class FooComponent {
   getDataPosted = (d : Foo) => {
     this.dataPosted = d;
     console.log(this.dataPosted);
-  } 
+  } */
 }

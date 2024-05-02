@@ -5,5 +5,5 @@ export class Prenotazione {
     ora !: string;
     indirizzo !: string;
     email !: string;
-    teleono !: string;
+    telefono !: string;
 }

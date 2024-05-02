@@ -1,36 +1,35 @@
 <form>
   <div class="card mx-auto bg-info" style="width: 32rem; margin: 30px;">
     <label for="nome" class="fw-bold">Nome: </label>
-    <input type="text" name="nome"><br>
+    <input type="text" name="nome" #nome><br>
     
     <label for="cognome" class="fw-bold">Cognome: </label>
-    <input type="text" name="cognome"><br>
+    <input type="text" name="cognome" #cognome><br>
 
     <label for="indirizzo" class="fw-bold">Indirizzo: </label>
-    <input type="text" name="indirizzo"><br>
+    <input type="text" name="indirizzo" #indirizzo><br>
 
     <label for="telefono" class="fw-bold">Telefono: </label>
-    <input type="text" name="telefono"><br>
+    <input type="text" name="telefono" #telefono><br>
 
     <label for="email" class="fw-bold">Email: </label>
-    <input type="email" name="email"><br>
+    <input type="email" name="email" #email><br>
 
     <label for="dataPr" class="fw-bold">Data prenotazione: </label>
-    <input type="text" name="dataPr"><br>
+    <input type="text" name="dataPr" #dataPr><br>
 
     <label for="oraPr" class="fw-bold">Ora prenotazione: </label>
-    <input type="text" name="oraPr"><br>
+    <input type="text" name="oraPr" #oraPr><br>
     <br>
-    <button type="button" class="btn btn-secondary" (click)="mostra()">Prenota</button>
+    <button type="button" class="btn btn-secondary" (click)="prenota(nome, cognome, indirizzo, telefono, email, dataPr, oraPr)">Prenota</button>
   </div>
 </form>
 <br>
-<div *ngIf="nascondi">
-  <button class="card text-center btn btn-warning mx-auto" *ngFor = "let a of data" style="width: 32rem;" (click)="foosss()">
-    <p class="fw-bold">{{a.data}} - {{a.ora}} -> {{a.nome}} {{a.cognome}}</p>
-  </button>
-  <div *ngIf="fooSS">
-    <app-foo></app-foo>
-  </div>
+<button class="card text-center btn btn-warning mx-auto" *ngFor = "let a of data" style="width: 32rem;" (click)="foosss()">
+  <p class="fw-bold">{{a.data}} - {{a.ora}} -> {{a.nome}} {{a.cognome}}</p>
+</button><br>
+<div *ngIf="fooSS" class="text-center">
+  <app-foo [mostra] = "data"></app-foo>
 </div>
+
   
