@@ -14,7 +14,6 @@ export class AppComponent {
   obs !: Observable<Prenotazione[]>;
   nascondi: boolean = false;
   ciclo !: Prenotazione;
-  dataPosted !: Prenotazione;
   tempPren!: Prenotazione;
   o !: Observable<{ id: number }>;
   constructor(private http: HttpClient) {
@@ -37,7 +36,6 @@ export class AppComponent {
     this.o = this.http.post<{ id: number }>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking', dati);
     this.o.subscribe(this.getDataPosted);
     this.tempPren = new Prenotazione(n.value, c.value, dP.value, oP.value, i.value, e.value, t.value)
-
     return false
   }
   getDataPosted = (p: { id: number }) => {
