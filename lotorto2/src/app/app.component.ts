@@ -12,10 +12,11 @@ export class AppComponent {
   title = 'lotorto2';
   data !: Prenotazione[];
   obs !: Observable<Prenotazione[]>;
-  nascondi : boolean = false;
+  nascondi: boolean = false;
   ciclo !: Prenotazione;
   dataPosted !: Prenotazione;
-  o !: Observable<Prenotazione>;
+  tempPren!: Prenotazione;
+  o !: Observable<{ id: number }>;
   constructor(private http: HttpClient) {
     this.obs = this.http.get<Prenotazione[]>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking');
     this.obs.subscribe(this.getData);
@@ -33,15 +34,20 @@ export class AppComponent {
       "email": e.value,
       "telefono": t.value
     });
-    this.o = this.http.post<Prenotazione>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking', dati);
+    this.o = this.http.post<{ id: number }>('https://my-json-server.typicode.com/Riccardolotorto/preparazione-http/booking', dati);
     this.o.subscribe(this.getDataPosted);
-    this.data.push(new Prenotazione(n.value, c.value, dP.value, oP.value, i.value, e.value, t.value));
+    this.tempPren = new Prenotazione(n.value, c.value, dP.value, oP.value, i.value, e.value, t.value)
+
     return false
   }
-  getDataPosted = (p: Prenotazione) => {
-    this.dataPosted = p;
+  getDataPosted = (p: { id: number }) => {
+    console.log(p);
+    // this.dataPosted = p;
+    if (p.id != undefined) {
+      this.data.push(this.tempPren);
+    }
   }
-  fooSSS(f: Prenotazione): boolean{
+  fooSSS(f: Prenotazione): boolean {
     this.nascondi = !this.nascondi;
     this.ciclo = f;
     return false
