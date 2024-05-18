@@ -1,0 +1,34 @@
+<form>
+  <input type="text" #nome>
+  <label>Nome:</label><br>
+
+  <input type="text" #cognome>
+  <label>Cognome:</label><br>
+
+  <input type="text" #data>
+  <label>Data:</label><br>
+
+  <input type="text" #ora>
+  <label>Ora:</label><br>
+
+  <input type="text" #indirizzo>
+  <label>Indirizzo:</label><br>
+
+  <input type="text" #email>
+  <label>Email:</label><br>
+
+  <input type="text" #telefono>
+  <label>Telefono:</label><br><br>
+
+  <button type="button" (click) = "prenota(nome, cognome, data, ora, indirizzo, email, telefono)">Prenota</button>
+</form>
+<br>
+<div *ngFor="let a of pippo">
+  <button style="width: 18rem;" (click)="mostra(a)">
+    <p>{{a.nome}} - {{a.ora }} -> {{a.nome }} {{a.cognome}}</p>
+  </button>
+</div>
+<br>
+<div *ngIf="nascondi">
+  <app-foo [mostra]="ciclo"></app-foo>
+</div>
